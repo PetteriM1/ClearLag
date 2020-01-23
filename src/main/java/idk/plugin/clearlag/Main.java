@@ -4,7 +4,7 @@ import cn.nukkit.Server;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.entity.Entity;
-import cn.nukkit.entity.EntityHuman;
+import cn.nukkit.entity.impl.Human;
 import cn.nukkit.event.Listener;
 import cn.nukkit.level.Level;
 import cn.nukkit.plugin.PluginBase;
@@ -23,17 +23,17 @@ public class Main extends PluginBase implements Listener {
                 return true;
             }
 
-            for (Level level : Server.getInstance().getLevels().values()) {
+            for (Level level : Server.getInstance().getLevels()) {
                 for (Entity entity : level.getEntities()) {
-                    if (!(entity instanceof EntityHuman)) {
+                    if (!(entity instanceof Human)) {
                         entity.close();
                     }
                 }
             }
 
-            for (Level level : getServer().getLevels().values()) {
+            for (Level level : getServer().getLevels()) {
                 level.doChunkGarbageCollection();
-                level.unloadChunks(true);
+                //level.unloadChunks(true);
             }
             System.gc();
 
