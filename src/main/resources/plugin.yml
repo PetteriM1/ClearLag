@@ -2,7 +2,7 @@ name: ClearLag
 version: "${pom.version}"
 api: ["1.0.0"]
 author: PetteriM1
-main: idk.plugin.clearlag.Main
+main: me.petterim1.clearlag.Main
 
 commands:
   clearlag:
